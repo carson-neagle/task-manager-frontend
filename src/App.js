@@ -1,42 +1,39 @@
 //Dependencies
-import { BrowserRouter as Router, Link, Route, Routes } from 'react-router-dom';
-import { Form, Container, Nav, Navbar, Button } from "react-bootstrap";
-import './App.css';
+import { BrowserRouter as Router, Link, Route, Routes } from "react-router-dom";
+import { Container, Nav, Navbar } from "react-bootstrap";
+import {Helmet} from 'react-helmet'
+import "./App.css";
 import Tasks from "./components/tasks.js";
 import Create from "./components/create.js"
 
 function App() {
   return (
-    <div className="App" style ={{ backgroundImage: `url(https://i.natgeofe.com/n/2a832501-483e-422f-985c-0e93757b7d84/6.jpg)`}}>
-      <header>
-              <h1 className="JCD To-Do">Get Your Tasks Done!</h1>
+    <div className="App">
+      <Helmet>
+            <style>{'body { background-color: rgb(78,53,36) }'}</style>
+      </Helmet>
           <Router>
               <Container>
-                <Navbar bg="dark" expand="lg">
-                  <Container>
-                  <Navbar.Brand>JCD</Navbar.Brand>
-                  <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                  <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className="me-auto">
+                <Navbar>
+                  <Container className="navbar">
+                    <Nav>
                       <Nav.Link>
-                        <Link to="/">To-Do List</Link>
+                        <Link to="/"><h1>To-Do List</h1></Link>
                       </Nav.Link>
                       <Nav.Link>
-                        <Link to="/create">Create an Event</Link>
+                        <Link to="/create"><h2>+</h2></Link>
                       </Nav.Link>
                     </Nav>
-                  </Navbar.Collapse>
                   </Container>
                 </Navbar>
-              </Container>
-          </Router>
-    </header>
+              </Container>  
+
             <Routes>
-              <Route exact path="/" element={<Tasks/>}></Route>
+              <Route path="/" element={<Tasks/>}></Route>
               <Route path="/create" element={<Create/>}></Route>
             </Routes>
-
-    </div>
+            </Router>
+    </div>   
   );
 }
 

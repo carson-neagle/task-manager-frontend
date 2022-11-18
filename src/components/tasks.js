@@ -1,6 +1,6 @@
 //Dependencies
 import React, { useEffect, useState } from "react";
-import { Card, Button } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 import "../App.css"
 
 //Tasks Pulled From Backend
@@ -9,7 +9,7 @@ export default function TaskList() {
 
   useEffect(() => {
     async function getTasks() {
-      const response = await fetch("");
+      const response = await fetch("mongodb+srv://JCDToDo:JCDToDo@cluster0.15aoum5.mongodb.net/?retryWrites=true&w=majorit");
       
       if (!response.ok) {
         const message = "An error occurred"
@@ -18,7 +18,7 @@ export default function TaskList() {
       }
 
       const tasks = await response.json();
-      setTasks(Tasks);
+      setTasks(tasks);
     }
 
     getTasks();

@@ -18,14 +18,14 @@ export default function Create() {
     async function onSubmit(e) {
         e.preventDefault();
 
-        const newEvent = { ...form };
+        const newTask = { ...form };
 
-        await fetch("https://attck-recipes-back-end.herokuapp.com/recipes", { 
+        await fetch("mongodb+srv://JCDToDo:JCDToDo@cluster0.15aoum5.mongodb.net/?retryWrites=true&w=majorit", { 
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
-            body: JSON.stringify(newEvent),
+            body: JSON.stringify(newTask),
         })
         .catch(error => {
             window.alert(error);
@@ -33,15 +33,15 @@ export default function Create() {
         })
 
         setForm({title:"", description:"", importance:""});
-        navigate("/event");
+        navigate("/");
     }
 
     return (
         <div>
-            <h3>Create New Event</h3>
+            <h3>Create New Task</h3>
             <form onSubmit={onSubmit}>
                 <div className="form-group">
-                    <label htmlFor = "title">Event Title</label>
+                    <label htmlFor = "title">Title</label>
                     <input
                         type="text"
                         className="form-control"
@@ -50,7 +50,7 @@ export default function Create() {
                     />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="text">Event Description</label>
+                    <label htmlFor="text">Description</label>
                     <input
                         type="text"
                         className="form-control"
@@ -71,7 +71,7 @@ export default function Create() {
                 <div className="form-group">
                     <input
                         type="submit"
-                        value="Create Event"
+                        value="Add Task"
                         className = "btn btn-primary"
                     />
                 </div>
@@ -79,3 +79,4 @@ export default function Create() {
         </div>
     )
 }
+
