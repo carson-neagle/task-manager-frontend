@@ -33,17 +33,6 @@ export default function TaskList() {
   }, []);
 
 
-//Delete
-function deleteTask(id){
-  fetch(`https://jcd-todo.herokuapp.com/tasks/${id}`),{
-    method: 'DELETE'
-    .then((result)=>{
-      result.json().then((resp)=>{
-        console.warn(resp)
-      })
-    })
-}
-
 
   //Display Tasks on Task Route
   const display = tasks.map(task => {
@@ -62,7 +51,7 @@ function deleteTask(id){
               <Card.Text>
               {JSON.stringify(task.priority)}
               </Card.Text>
-              <Button class="btn btn-danger" onClick={()=>deleteTask()}>Done</Button>
+              <Button class="btn btn-danger" method="DELETE" action="https://localhost:5400/tasks">Done</Button>
             </Card.Body>
           </Card>
         {/* </ul> */}
@@ -80,4 +69,4 @@ function deleteTask(id){
 
 
 }
-}
+
