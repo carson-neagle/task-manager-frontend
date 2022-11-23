@@ -1,82 +1,43 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router";
+import React from "react";
+import "../App.css";
 
-export default function Create() {
-    const[form, setForm] = useState({
-        title:"",
-        description:"",
-        importance:"",
-    });
-    const navigate = useNavigate();
 
-    function updateForm(value) {
-        return setForm((prev) => {
-            return { ...prev, ...value};
-        });
-    }
 
-    async function onSubmit(e) {
-        e.preventDefault();
+function Create(data) {
+  
+  let message = "";
+  if (data.message) {
+    message = <h4 className="alert-danger">{data.message}</h4>;
+  }
 
-        const newTask = { ...form };
 
-        await fetch("mongodb+srv://JCDToDo:JCDToDo@cluster0.15aoum5.mongodb.net/?retryWrites=true&w=majorit", { 
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(newTask),
-        })
-        .catch(error => {
-            window.alert(error);
-            return;
-        })
-
-        setForm({title:"", description:"", importance:""});
-        navigate("/");
-    }
-
-    return (
-        <div>
-            <h3>Create New Task</h3>
-            <form onSubmit={onSubmit}>
-                <div className="form-group">
-                    <label htmlFor = "title">Title</label>
-                    <input
-                        type="text"
-                        className="form-control"
-                        value={form.title}
-                        onChange={(e) => updateForm({ title: e.target.value })}
-                    />
-                </div>
-                <div className="form-group">
-                    <label htmlFor="text">Description</label>
-                    <input
-                        type="text"
-                        className="form-control"
-                        value = {form.text}
-                        onChange={(e) => updateForm({ text: e.target.value})}
-                    />
-                </div>
-                <div className="form-group">
-                    <label htmlFor="importance">Importance</label>
-                    <input
-                        type="text"
-                        defaultValue="!-!!!"
-                        className="form-control"
-                        value = {form.importance}
-                        onChange={(e) => updateForm({ importance: e.target.value})}
-                    />
-                </div>
-                <div className="form-group">
-                    <input
-                        type="submit"
-                        value="Add Task"
-                        className = "btn btn-primary"
-                    />
-                </div>
-            </form>
-        </div>
-    )
+  return (
+    <div className="addTask">
+      <main>
+        <h1>Add a New Task</h1>
+        {message}
+        <form  method="POST" action="https://localhost:5400/tasks" >
+          <div className="row">
+            <div className="form-group col-xs-6">
+              <label htmlFor="name">Task Name</label>
+              <input className="form-control" id="name" name="name" required />
+            </div>
+            <div className="form-group col-xs-6">
+              <label htmlFor="pic">Task Type</label>
+              <input className="form-control" id="type" name="type" />
+            </div>
+          </div>
+          <div className="row">
+            <div className="form-group col-xs-4">
+              <label htmlFor="city">Priority</label>
+              <input className="form-control" id="priority" name="priority" />
+            </div>
+          </div>
+          <input className="btn btn-primary" type="submit" value="Add Task" />
+        </form>
+      </main>
+      </div>
+  );
 }
 
+export default Create;

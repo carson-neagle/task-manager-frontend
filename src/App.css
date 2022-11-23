@@ -2,37 +2,88 @@
   text-align: center;
   background-color: darkolivegreen;
 }
-
-h1 {
+.navHeader {
+color: bisque;
+font-family: 'Courier New', 'Courier New', Courier, monospace;
+text-align: center;
+text-decoration: none;
+font-size: 32pt;
+font-weight: bold;
+margin-left: 25px;
+}
+.taskList{
   color: bisque;
   font-family: 'Courier New', 'Courier New', Courier, monospace;
   text-align: center;
+  text-decoration: none;
+  font-size: 32pt;
+  margin-left: 350px;
+  font-weight: bold;
 }
 
-h2 {
+.createButton {
   color:bisque;
   text-align: center;
   font-family: 'Courier New', Courier, monospace;
   background: brown;
-  width: 50px;
-  height: 50px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
-  margin-left: auto;
-  margin-right: auto;
-  font-size: 40px;
+  font-size: 42px;
+  text-decoration: none;
+  margin-left: 495px;
+}
+
+.navbar {
+  background-color: #929a94;
 }
 
 
 .card {
+  margin-top: 40px;
   margin-left: auto;
   margin-right:auto;
   margin-bottom: 50px;
+  border-radius: 10%;
 }
 
 .card-body {
-  margin-left: 30px;
+  border-radius: 10%;
+  background-color: darkolivegreen;
+  border: 10px;
+  color:#929a94;
+
 }
 
 .card-text ,.card-title{
-  color:black;
+  color:bisque;
+  text-decoration: none;
+}
+
+.addTask {
+  background-color: darkolivegreen;
+  border-radius: 25%;
+  margin-left: 7in;
+  margin-right: 7in;
+}
+
+.homepage {
+  border-radius: 10%;
+}
+
+.list {
+  border-radius: 10%
+}
+
+li {
+  text-decoration: none;
+}
+
+button {
+  color: brown;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.homeCard {
+  margin-bottom: 20px;
 }
